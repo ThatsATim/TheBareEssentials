@@ -4,7 +4,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-import sun.security.provider.ConfigFile;
 
 public class Chat {
     public static String color (String s){

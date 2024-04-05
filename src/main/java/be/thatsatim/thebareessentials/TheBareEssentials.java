@@ -1,6 +1,6 @@
 package be.thatsatim.thebareessentials;
 
-import org.bukkit.configuration.file.FileConfiguration;
+import be.thatsatim.thebareessentials.commands.Top;
 import org.bukkit.plugin.java.JavaPlugin;
 import be.thatsatim.thebareessentials.commands.Fly;
 
@@ -10,6 +10,7 @@ public final class TheBareEssentials extends JavaPlugin {
     public void onEnable() {
         this.saveDefaultConfig();
         new Fly(this);
+        new Top(this);
     }
 
 }

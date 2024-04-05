@@ -23,6 +23,11 @@ public class Fly implements CommandExecutor, TabCompleter {
 
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] arguments) {
 
+        if (!(sender.hasPermission("TBE.top"))) {
+            Chat.message(sender, "no_perms", config, null);
+            return true;
+        }
+
         if (arguments.length > 1) {
             sender.sendMessage(Chat.color(config.getString("fly.messages.tooManyArguments")));
             return true;
