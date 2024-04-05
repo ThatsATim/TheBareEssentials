@@ -7,9 +7,11 @@ commands:
     description: Toggle a player's ability to fly.
     usage: /fly [player]
     permission: TBE.fly
-    permission-message: TBE - You do not have permission to use this command.
   top:
     description: Teleport to the highest block at your location.
     usage: /top [player]
     permission: TBE.top
-    permission-message: TBE - You do not have permission to use this command.
+  repair:
+    description: repairs an item or the whole inventory of a player.
+    usage: /repair <all / HeldItem> [playername]
+    permission: TBE.repair

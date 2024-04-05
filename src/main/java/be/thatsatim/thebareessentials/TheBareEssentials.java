@@ -1,8 +1,7 @@
 package be.thatsatim.thebareessentials;
 
-import be.thatsatim.thebareessentials.commands.Top;
+import be.thatsatim.thebareessentials.commands.*;
 import org.bukkit.plugin.java.JavaPlugin;
-import be.thatsatim.thebareessentials.commands.Fly;
 
 public final class TheBareEssentials extends JavaPlugin {
 
@@ -11,6 +10,7 @@ public final class TheBareEssentials extends JavaPlugin {
         this.saveDefaultConfig();
         new Fly(this);
         new Top(this);
+        new Repair(this);
     }
 
 }

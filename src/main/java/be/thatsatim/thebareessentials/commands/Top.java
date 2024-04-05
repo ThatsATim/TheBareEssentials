@@ -38,7 +38,7 @@ public class Top implements CommandExecutor, TabCompleter {
 
         if (arguments.length == 0) {
             if (!(sender instanceof Player)) {
-                sender.sendMessage(Chat.color("&6TheBareEssentials: &c/top playername"));
+                sender.sendMessage(Chat.color("&6TheBareEssentials: &c/top <playername>"));
                 return true;
             }
             Player player = (Player) sender;

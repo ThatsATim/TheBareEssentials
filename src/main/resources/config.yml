@@ -27,3 +27,19 @@ top:
       player: "&66TheBareEssentials &a<PLAYER> teleported you to the top."
     console: "&6TheBareEssentials: &aThe console teleported you to the top."
     tooManyArguments: "&6TheBareEssentials: &cToo many arguments => /top [playername]"
+
+repair:
+  messages:
+    self:
+      HeldItem: "You repaired the item in your hand."
+      all: "You repaired all the items in your inventory."
+    other:
+      HeldItem:
+        sender: "You have repaired the item in the hand of <PLAYER>."
+        player: "<PLAYER> has repaired the item in your hand."
+        console: "The console has repaired the item in your hand."
+      all:
+        sender: "You have repaired all items in the inventory of <PLAYER>."
+        player: "<PLAYER> has repaired all the items in your inventory."
+        console: "The console has repaired all the items in your inventory."
+    wrongArguments: "&6TheBareEssentials: &cWrong arguments => /repair [all] [playername]"

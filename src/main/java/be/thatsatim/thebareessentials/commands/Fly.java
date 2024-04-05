@@ -35,7 +35,7 @@ public class Fly implements CommandExecutor, TabCompleter {
 
         if (arguments.length == 0) {
             if (!(sender instanceof Player)) {
-                sender.sendMessage(Chat.color("&6TheBareEssentials: &c/fly playername"));
+                sender.sendMessage(Chat.color("&6TheBareEssentials: &c/fly <playername>"));
                 return true;
             }
             int active = toggleFly((Player) sender);
