@@ -1,0 +1,10 @@
+name: TheBareEssentials
+version: '${project.version}'
+main: be.thatsatim.thebareessentials.TheBareEssentials
+api-version: 1.20
+commands:
+  fly:
+    description: Toggle a player's ability to fly.
+    usage: /fly [player]
+    permission: TBE.fly
+    permission-message: You do not have permission to use this command.

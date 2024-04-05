@@ -1,0 +1,18 @@
+playerNotFound: "&6TheBareEssentials: &cPlayer not found!"
+fly:
+  messages:
+    self:
+      activate: "&6TheBareEssentials: &aYou enabled flight on yourself."
+      deactivate: "&6TheBareEssentials: &cYou deactivated flight on yourself."
+    other:
+      sender:
+        activate: "&6TheBareEssentials: &aYou enabled flight on <PLAYER>."
+        deactivate: "&6TheBareEssentials: &cYou deactivated flight on <PLAYER>."
+      target:
+        activate: "&6TheBareEssentials: &a<PLAYER> enabled flight on you."
+        deactivate: "&6TheBareEssentials: &c<PLAYER> deactivated flight on you."
+    console:
+      target:
+        activate: "&6TheBareEssentials: &aThe console enabled flight on you."
+        deactivate: "&6TheBareEssentials: &cThe console deactivated flight on you."
+    tooManyArguments: "&6TheBareEssentials: &cToo many arguments => /fly [playername]"
