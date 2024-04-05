@@ -2,7 +2,6 @@ package be.thatsatim.thebareessentials.commands;
 
 import be.thatsatim.thebareessentials.TheBareEssentials;
 import be.thatsatim.thebareessentials.utils.Chat;
-import com.sun.org.apache.bcel.internal.generic.ObjectType;
 import org.bukkit.Bukkit;
 import org.bukkit.command.*;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -40,7 +39,7 @@ public class Fly implements CommandExecutor, TabCompleter {
         }
 
         if ((Bukkit.getPlayerExact(arguments[0]) == null)) {
-            message(sender, "playerNotFound", null);
+            Chat.message(sender, "playerNotFound", config, null);
             return true;
         }
 
@@ -54,22 +53,22 @@ public class Fly implements CommandExecutor, TabCompleter {
 
         if (sender instanceof Player) {
             if (active == 1) {
-                message(sender, "fly.messages.other.sender.activate", player.getDisplayName());
-                message(player, "fly.messages.other.target.activate", ((Player) sender).getDisplayName());
+                Chat.message(sender, "fly.messages.other.sender.activate", config, player.getDisplayName());
+                Chat.message(player, "fly.messages.other.target.activate", config, ((Player) sender).getDisplayName());
                 return true;
             }
-            message(sender, "fly.messages.other.sender.deactivate", player.getDisplayName());
-            message(player, "fly.messages.other.target.deactivate", ((Player) sender).getDisplayName());
+            Chat.message(sender, "fly.messages.other.sender.deactivate", config, player.getDisplayName());
+            Chat.message(player, "fly.messages.other.target.deactivate", config, ((Player) sender).getDisplayName());
             return true;
         }
 
         if (active == 1) {
-            message(sender, "fly.messages.other.sender.activate", player.getDisplayName());
-            message(player, "fly.messages.console.target.activate", null);
+            Chat.message(sender, "fly.messages.other.sender.activate", config, player.getDisplayName());
+            Chat.message(player, "fly.messages.console.target.activate", config, null);
             return true;
         }
-        message(sender, "fly.messages.other.sender.deactivate", player.getDisplayName());
-        message(player, "fly.messages.console.target.deactivate", null);
+        Chat.message(sender, "fly.messages.other.sender.deactivate", config, player.getDisplayName());
+        Chat.message(player, "fly.messages.console.target.deactivate", config, null);
         return true;
     }
 
@@ -83,29 +82,12 @@ public class Fly implements CommandExecutor, TabCompleter {
         return 1;
     }
 
-    public void message(Object receiver, String message, String replace) {
-        if (receiver instanceof Player) {
-            if (replace == null) {
-                ((Player) receiver).sendMessage(Chat.color(config.getString(message)));
-                return;
-            }
-            ((Player) receiver).sendMessage(Chat.color(config.getString(message).replace("<PLAYER>", replace)));
-        }
-        if (receiver instanceof ConsoleCommandSender) {
-            if (replace == null) {
-                ((ConsoleCommandSender) receiver).sendMessage(Chat.color(config.getString(message)));
-                return;
-            }
-            ((ConsoleCommandSender) receiver).sendMessage(Chat.color(config.getString(message).replace("<PLAYER>", replace)));
-        }
-    }
-
     public void flySelfMessage(Player receiver, Integer active) {
         if (active == 1) {
-            message(receiver, "fly.messages.self.activate", null);
+            Chat.message(receiver, "fly.messages.self.activate", config, null);
             return;
         }
-        message(receiver, "fly.messages.self.deactivate", null);
+        Chat.message(receiver, "fly.messages.self.deactivate", config,null);
     }
 
     @Override
