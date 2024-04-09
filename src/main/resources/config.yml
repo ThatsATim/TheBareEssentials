@@ -17,7 +17,7 @@ fly:
       target:
         activate: "&6TheBareEssentials: &aThe console enabled flight on you."
         deactivate: "&6TheBareEssentials: &cThe console deactivated flight on you."
-    tooManyArguments: "&6TheBareEssentials: &cToo many arguments => /fly [playername]"
+    wrongArguments: "&6TheBareEssentials: &cToo many arguments => /fly [playername]"
 
 top:
   messages:
@@ -26,7 +26,7 @@ top:
       sender: "&6TheBareEssentials &aYou teleported <PLAYER> to the top."
       player: "&66TheBareEssentials &a<PLAYER> teleported you to the top."
     console: "&6TheBareEssentials: &aThe console teleported you to the top."
-    tooManyArguments: "&6TheBareEssentials: &cToo many arguments => /top [playername]"
+    wrongArguments: "&6TheBareEssentials: &cToo many arguments => /top [playername]"
 
 repair:
   messages:

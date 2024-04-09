@@ -11,6 +11,7 @@ public final class TheBareEssentials extends JavaPlugin {
         new Fly(this);
         new Top(this);
         new Repair(this);
+        new Gamemode(this);
+        new GmX(this);
     }
-
 }

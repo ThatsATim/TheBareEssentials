@@ -29,7 +29,7 @@ public class Fly implements CommandExecutor, TabCompleter {
         }
 
         if (arguments.length > 1) {
-            sender.sendMessage(Chat.color(config.getString("fly.messages.tooManyArguments")));
+            Chat.message(sender, "fly.messages.wrongArguments", config, null);
             return true;
         }
 

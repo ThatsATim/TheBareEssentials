@@ -82,11 +82,9 @@ public class Repair implements CommandExecutor, TabCompleter {
         Chat.message(sender, "repair.messages.other.all.sender", config, player.getDisplayName());
         return true;
     }
-
     public void repairItem(ItemStack item) {
         item.setDurability((short) 0);
     }
-
     public void repairInventory(PlayerInventory inventory) {
         for (ItemStack item : inventory) {
             if (item == null) continue;
@@ -96,7 +94,6 @@ public class Repair implements CommandExecutor, TabCompleter {
             }
         }
     }
-
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] arguments) {
 

@@ -32,7 +32,7 @@ public class Top implements CommandExecutor, TabCompleter {
         }
 
         if (arguments.length > 1) {
-            Chat.message(sender, "top.messages.tooManyArguments", config, null);
+            Chat.message(sender, "top.messages.wrongArguments", config, null);
             return true;
         }
 

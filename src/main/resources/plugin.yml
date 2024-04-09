@@ -15,3 +15,23 @@ commands:
     description: repairs an item or the whole inventory of a player.
     usage: /repair <all / HeldItem> [playername]
     permission: TBE.repair
+  gamemode:
+    description: Set a players gamemode.
+    usage: /gamemode <creative / survival / adventure / spectator> [playername]
+    permission: TBE.gamemode
+  gmc:
+    description: Set a players gamemode to creative.
+    usage: /gmc [playername]
+    permission: TBE.gamemode
+  gms:
+    description: Set a players gamemode to survival.
+    usage: /gms [playername]
+    permission: TBE.gamemode
+  gma:
+    description: Set a players gamemode to adventure.
+    usage: /gma [playername]
+    permission: TBE.gamemode
+  gmsp:
+    description: Set a players gamemode to spectator.
+    usage: /gmsp [playername]
+    permission: TBE.gamemode
