@@ -43,3 +43,16 @@ repair:
         player: "<PLAYER> has repaired all the items in your inventory."
         console: "The console has repaired all the items in your inventory."
     wrongArguments: "&6TheBareEssentials: &cWrong arguments => /repair [all] [playername]"
+
+gamemode:
+  messages:
+    self: "You set your own gamemode to <MODE>."
+    other:
+      sender: "You set <PLAYER> in <MODE>."
+      target: "<PLAYER> set you in <MODE>."
+    console: "The console set you in <MODE>"
+    wrongArguments: "&6TheBareEssentials: &cWrong arguments => /gamemode <creative / survival / adventure / spectator> [playername]"
+
+gmX:
+  messages:
+    wrongArguments: "&6TheBareEssentials: &cWrong arguments => /gm<c / s / a / sp> [playername]"
