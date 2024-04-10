@@ -12,26 +12,6 @@ public class Chat {
         return ChatColor.translateAlternateColorCodes('&', s);
     }
 
-    /*
-    public static void message(Object receiver, String message, FileConfiguration config, String replace) {
-        if (receiver instanceof Player) {
-            if (replace == null) {
-                ((Player) receiver).sendMessage(color(config.getString(message)));
-                return;
-            }
-            ((Player) receiver).sendMessage(color(config.getString(message).replace("<PLAYER>", replace)));
-            return;
-        }
-        if (receiver instanceof ConsoleCommandSender) {
-            if (replace == null) {
-                ((ConsoleCommandSender) receiver).sendMessage(color(config.getString(message)));
-                return;
-            }
-            ((ConsoleCommandSender) receiver).sendMessage(color(config.getString(message).replace("<PLAYER>", replace)));
-        }
-    }
-    */
-
     public static String[][] noReplacements = {};
 
     public static void message(Object receiver, String message, FileConfiguration config, String[][] replacements) {
