@@ -2,6 +2,7 @@ package be.thatsatim.thebareessentials.commands;
 
 import be.thatsatim.thebareessentials.TheBareEssentials;
 import be.thatsatim.thebareessentials.utils.Chat;
+import it.unimi.dsi.fastutil.ints.IntLists;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -27,12 +28,12 @@ public class Top implements CommandExecutor, TabCompleter {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] arguments) {
 
         if (!(sender.hasPermission("TBE.top"))) {
-            Chat.message(sender, "no_perms", config, null);
+            Chat.message(sender, "no_perms", config, Chat.noReplacements);
             return true;
         }
 
         if (arguments.length > 1) {
-            Chat.message(sender, "top.messages.wrongArguments", config, null);
+            Chat.message(sender, "top.messages.wrongArguments", config, Chat.noReplacements);
             return true;
         }
 
@@ -43,32 +44,35 @@ public class Top implements CommandExecutor, TabCompleter {
             }
             Player player = (Player) sender;
             teleportToTop(player);
-            Chat.message(player, "top.messages.self", config, null);
+            Chat.message(player, "top.messages.self", config, Chat.noReplacements);
             return true;
         }
 
         if (Bukkit.getPlayerExact(arguments[0]) == null) {
-            Chat.message(sender, "playerNotFound", config, null);
+            Chat.message(sender, "playerNotFound", config, Chat.noReplacements);
             return true;
         }
 
         Player player = Bukkit.getPlayer(arguments[0]);
         assert player != null;
 
+        String[][] replacementsSender = {{"<PLAYER>", player.getDisplayName()}};
+        String[][] replacementsPlayer = {{"<PLAYER>", ((Player) sender).getDisplayName()}};
+
         teleportToTop(player);
 
         if (sender == Bukkit.getPlayerExact(arguments[0])) {
-            Chat.message(sender, "top.messages.self", config, null);
+            Chat.message(sender, "top.messages.self", config, Chat.noReplacements);
             return true;
         }
 
         if (sender instanceof Player) {
-            Chat.message(sender, "top.messages.other.sender", config, player.getDisplayName());
-            Chat.message(player, "top.messages.other.player", config, ((Player) sender).getDisplayName());
+            Chat.message(sender, "top.messages.other.sender", config, replacementsSender);
+            Chat.message(player, "top.messages.other.player", config, replacementsPlayer);
             return true;
         }
-        Chat.message(sender, "top.messages.other.sender", config, player.getDisplayName());
-        Chat.message(player, "top.messages.console", config, null);
+        Chat.message(sender, "top.messages.other.sender", config, replacementsSender);
+        Chat.message(player, "top.messages.console", config, Chat.noReplacements);
         return true;
     }
 

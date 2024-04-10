@@ -2,7 +2,6 @@ package be.thatsatim.thebareessentials.commands;
 
 import be.thatsatim.thebareessentials.TheBareEssentials;
 import be.thatsatim.thebareessentials.utils.Chat;
-import com.google.common.xml.XmlEscapers;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -33,12 +32,12 @@ public class Repair implements CommandExecutor, TabCompleter {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String string, @NotNull String[] arguments) {
 
         if (!(sender.hasPermission("TBE.repair"))) {
-            Chat.message(sender, "no_perms", config, null);
+            Chat.message(sender, "no_perms", config, Chat.noReplacements);
             return true;
         }
 
         if (arguments.length > 2 || arguments.length == 0) {
-            Chat.message(sender, "repair.messages.wrongArguments", config, null);
+            Chat.message(sender, "repair.messages.wrongArguments", config, Chat.noReplacements);
             return true;
         }
 
@@ -50,36 +49,39 @@ public class Repair implements CommandExecutor, TabCompleter {
             Player player = (Player) sender;
             if (arguments[0].equalsIgnoreCase("HeldItem")) {
                 repairItem(player.getInventory().getItemInMainHand());
-                Chat.message(player, "repair.messages.self.HeldItem", config, null);
+                Chat.message(player, "repair.messages.self.HeldItem", config, Chat.noReplacements);
                 return true;
             }
             repairInventory(player.getInventory());
-            Chat.message(player, "repair.messages.self.all", config, null);
+            Chat.message(player, "repair.messages.self.all", config, Chat.noReplacements);
             return true;
         }
 
         Player player = Bukkit.getPlayerExact(arguments[1]);
         assert player != null;
 
+        String[][] replacementsSender = {{"<PLAYER>", player.getDisplayName()}};
+        String[][] replacementsPlayer = {{"<PLAYER>", ((Player) sender).getDisplayName()}};
+
         if (arguments[0].equalsIgnoreCase("HeldItem")) {
             repairItem(player.getInventory().getItemInMainHand());
             if (sender instanceof Player) {
-                Chat.message(player, "repair.messages.other.HeldItem.player", config, ((Player) sender).getDisplayName());
-                Chat.message(sender, "repair.messages.other.HeldItem.sender", config, player.getDisplayName());
+                Chat.message(player, "repair.messages.other.HeldItem.player", config, replacementsPlayer);
+                Chat.message(sender, "repair.messages.other.HeldItem.sender", config, replacementsSender);
                 return true;
             }
-            Chat.message(player, "repair.messages.other.handheld.console", config, null);
-            Chat.message(sender, "repair.messages.other.HeldItem.sender", config, player.getDisplayName());
+            Chat.message(player, "repair.messages.other.handheld.console", config, Chat.noReplacements);
+            Chat.message(sender, "repair.messages.other.HeldItem.sender", config, replacementsSender);
             return true;
         }
         repairInventory(player.getInventory());
         if (sender instanceof Player) {
-            Chat.message(player, "repair.messages.other.all.player", config, ((Player) sender).getDisplayName());
-            Chat.message(sender, "repair.messages.other.all.sender", config, player.getDisplayName());
+            Chat.message(player, "repair.messages.other.all.player", config, replacementsPlayer);
+            Chat.message(sender, "repair.messages.other.all.sender", config, replacementsSender);
             return true;
         }
-        Chat.message(player, "repair.messages.other.all.console", config, null);
-        Chat.message(sender, "repair.messages.other.all.sender", config, player.getDisplayName());
+        Chat.message(player, "repair.messages.other.all.console", config, Chat.noReplacements);
+        Chat.message(sender, "repair.messages.other.all.sender", config, replacementsSender);
         return true;
     }
     public void repairItem(ItemStack item) {
