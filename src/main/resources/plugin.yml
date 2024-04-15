@@ -35,3 +35,7 @@ commands:
     description: Set a players gamemode to spectator.
     usage: /gmsp [playername]
     permission: TBE.gamemode
+  heal:
+    description: Heals a player
+    usage: /heal [playername]
+    permission: TBE.heal

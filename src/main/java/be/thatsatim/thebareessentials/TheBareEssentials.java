@@ -13,5 +13,6 @@ public final class TheBareEssentials extends JavaPlugin {
         new Repair(this);
         new Gamemode(this);
         new GmX(this);
+        new Heal(this);
     }
 }

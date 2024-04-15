@@ -56,3 +56,9 @@ gamemode:
 gmX:
   messages:
     wrongArguments: "&6TheBareEssentials: &cWrong arguments => /gm<c / s / a / sp> [playername]"
+
+heal:
+  messages:
+    self: "You healed yourself!"
+    other: "<PLAYER> healed you."
+    console: "The console has healed you."
