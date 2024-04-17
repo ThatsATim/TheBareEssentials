@@ -39,3 +39,11 @@ commands:
     description: Heals a player
     usage: /heal [playername]
     permission: TBE.heal
+  tpall:
+    description: Teleports everyone to a player
+    usage: /tpall [playername]
+    permission: TBE.tpall
+  tphere:
+    description: Teleports a player to you
+    usage: /tphere [player]
+    permission: TBE.tphere
