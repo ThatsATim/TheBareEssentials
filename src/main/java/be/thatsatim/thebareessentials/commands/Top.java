@@ -20,7 +20,7 @@ public class Top implements CommandExecutor, TabCompleter {
 
     FileConfiguration config;
 
-    public Top(TheBareEssentials plugin){
+    public Top(TheBareEssentials plugin) {
         plugin.getCommand("top").setExecutor(this);
         config = plugin.getConfig();
     }

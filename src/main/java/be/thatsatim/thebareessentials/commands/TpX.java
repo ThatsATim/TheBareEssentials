@@ -19,7 +19,7 @@ public class TpX implements CommandExecutor, TabCompleter {
 
     FileConfiguration config;
 
-    public TpX(TheBareEssentials plugin){
+    public TpX(TheBareEssentials plugin) {
         plugin.getCommand("tpall").setExecutor(this);
         plugin.getCommand("tphere").setExecutor(this);
         config = plugin.getConfig();

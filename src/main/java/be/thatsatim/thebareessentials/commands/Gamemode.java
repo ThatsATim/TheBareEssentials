@@ -19,7 +19,7 @@ public class Gamemode implements CommandExecutor, TabCompleter {
 
     FileConfiguration config;
 
-    public Gamemode(TheBareEssentials plugin){
+    public Gamemode(TheBareEssentials plugin) {
         plugin.getCommand("gamemode").setExecutor(this);
         config = plugin.getConfig();
     }

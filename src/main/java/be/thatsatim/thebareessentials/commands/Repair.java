@@ -24,7 +24,7 @@ public class Repair implements CommandExecutor, TabCompleter {
 
     FileConfiguration config;
 
-    public Repair(TheBareEssentials plugin){
+    public Repair(TheBareEssentials plugin) {
         plugin.getCommand("repair").setExecutor(this);
         config = plugin.getConfig();
     }

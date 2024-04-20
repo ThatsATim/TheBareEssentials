@@ -16,7 +16,7 @@ public class Fly implements CommandExecutor, TabCompleter {
 
     FileConfiguration config;
 
-    public Fly(TheBareEssentials plugin){
+    public Fly(TheBareEssentials plugin) {
         plugin.getCommand("fly").setExecutor(this);
         config = plugin.getConfig();
     }

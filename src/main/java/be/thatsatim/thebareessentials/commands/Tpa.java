@@ -9,9 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -46,16 +44,16 @@ public class Tpa implements CommandExecutor, TabCompleter {
         }
 
         if (label.equalsIgnoreCase("tpdeny")) {
-            Player playerSender = (Player) sender;
-            if (!(targetMap.containsValue(playerSender.getUniqueId()))) {
-                // TODO add no request message
+            Player playerReceiver = (Player) sender;
+            if (!(targetMap.containsValue(playerReceiver.getUniqueId()))) {
+                Chat.message(playerReceiver, "tpa.noRequest", config, Chat.noReplacements);
                 return true;
             }
             for (Map.Entry<UUID, UUID> entry : targetMap.entrySet()) {
-                if (((UUID)entry.getValue()).equals(playerSender.getUniqueId())) {
+                if ((entry.getValue()).equals(playerReceiver.getUniqueId())) {
+                    Chat.message(playerReceiver, "tpa.tpDeny.receiver", config, Chat.noReplacements);
+                    Chat.message(Bukkit.getPlayer(entry.getKey()), "tpa.tpDeny.requester", config, Chat.noReplacements);
                     targetMap.remove(entry.getKey());
-                    Player playerTarget = Bukkit.getPlayer(entry.getKey());
-                    // TODO add messages
                     break;
                 }
             }
@@ -63,20 +61,20 @@ public class Tpa implements CommandExecutor, TabCompleter {
         }
 
         if (label.equalsIgnoreCase("tpaccept")) {
-            Player playerSender = (Player) sender;
-            if (targetMap.containsValue(playerSender.getUniqueId())) {
-                // TODO add no request message
+            Player playerReceiver = (Player) sender;
+            if (!(targetMap.containsValue(playerReceiver.getUniqueId()))) {
+                Chat.message(playerReceiver, "tpa.noRequest", config, Chat.noReplacements);
                 return true;
             }
             for (Map.Entry<UUID, UUID> entry : targetMap.entrySet()) {
-                if (((UUID)entry.getValue()).equals(playerSender.getUniqueId())) {
+                if ((entry.getValue()).equals(playerReceiver.getUniqueId())) {
 
-                    Player playerTarget = Bukkit.getPlayer(entry.getKey());
+                    Player playerRequester = Bukkit.getPlayer(entry.getKey());
 
-                    SuccessfulTpaEvent event = new SuccessfulTpaEvent(playerSender, playerSender.getLocation());
+                    SuccessfulTpaEvent event = new SuccessfulTpaEvent(playerReceiver, playerReceiver.getLocation());
                     Bukkit.getPluginManager().callEvent(event);
 
-                    playerTarget.teleport((Entity)playerSender);
+                    playerRequester.teleport(playerReceiver);
                     targetMap.remove(entry.getKey());
                     break;
                 }
@@ -85,7 +83,7 @@ public class Tpa implements CommandExecutor, TabCompleter {
         }
 
         if (!(arguments.length == 1)) {
-            // TODO add wrong arguments message
+            Chat.message(sender, "tpa.wrongArguments", config, Chat.noReplacements);
             return true;
         }
 
@@ -94,26 +92,27 @@ public class Tpa implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        Player playerSender = (Player) sender;
-        Player playerTarget = Bukkit.getPlayer(arguments[0]);
+        Player playerRequester = (Player) sender;
+        Player playerReceiver = Bukkit.getPlayer(arguments[0]);
 
-        if (playerSender == playerTarget) {
-            // TODO add message for tpa to self
+        if (playerRequester == playerReceiver) {
+            Chat.message(playerRequester, "tpa.tpaToSelf", config, Chat.noReplacements);
             return true;
         }
 
-        if (targetMap.containsKey(playerSender.getUniqueId())) {
-            // TODO add message player already has a request
+        if (targetMap.containsKey(playerRequester.getUniqueId())) {
+            String[][] replacements = {{"<PLAYER>", playerReceiver.getDisplayName()}};
+            Chat.message(playerRequester, "tpa.requestPending", config, replacements);
             return true;
         }
 
-        targetMap.put(playerSender.getUniqueId(), playerTarget.getUniqueId());
+        targetMap.put(playerRequester.getUniqueId(), playerReceiver.getUniqueId());
 
         (new BukkitRunnable() {
             public void run() {
-                Tpa.targetMap.remove(playerSender.getUniqueId());
+                Tpa.targetMap.remove(playerRequester.getUniqueId());
             }
-        }).runTaskLaterAsynchronously((Plugin)this.plugin, 6000L);
+        }).runTaskLaterAsynchronously(this.plugin, 6000L);
 
         return true;
     }

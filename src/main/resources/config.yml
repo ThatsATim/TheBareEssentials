@@ -31,26 +31,26 @@ top:
 repair:
   messages:
     self:
-      HeldItem: "You repaired the item in your hand."
-      all: "You repaired all the items in your inventory."
+      HeldItem: "&6TheBareEssentials: &aYou repaired the item in your hand."
+      all: "&6TheBareEssentials: &aYou repaired all the items in your inventory."
     other:
       HeldItem:
-        sender: "You have repaired the item in the hand of <PLAYER>."
-        player: "<PLAYER> has repaired the item in your hand."
-        console: "The console has repaired the item in your hand."
+        sender: "&6TheBareEssentials: &aYou have repaired the item in the hand of <PLAYER>."
+        player: "&6TheBareEssentials: &a<PLAYER> has repaired the item in your hand."
+        console: "&6TheBareEssentials: &aThe console has repaired the item in your hand."
       all:
-        sender: "You have repaired all items in the inventory of <PLAYER>."
-        player: "<PLAYER> has repaired all the items in your inventory."
-        console: "The console has repaired all the items in your inventory."
+        sender: "&6TheBareEssentials: &aYou have repaired all items in the inventory of <PLAYER>."
+        player: "&6TheBareEssentials: &a<PLAYER> has repaired all the items in your inventory."
+        console: "&6TheBareEssentials: &aThe console has repaired all the items in your inventory."
     wrongArguments: "&6TheBareEssentials: &cWrong arguments => /repair [all] [playername]"
 
 gamemode:
   messages:
-    self: "You set your own gamemode to <MODE>."
+    self: "&6TheBareEssentials: &aYou set your own gamemode to <MODE>."
     other:
-      sender: "You set <PLAYER> in <MODE>."
-      target: "<PLAYER> set you in <MODE>."
-    console: "The console set you in <MODE>"
+      sender: "&6TheBareEssentials: &aYou set <PLAYER> in <MODE>."
+      target: "&6TheBareEssentials: &a<PLAYER> set you in <MODE>."
+    console: "&6TheBareEssentials: &aThe console set you in <MODE>"
     wrongArguments: "&6TheBareEssentials: &cWrong arguments => /gamemode <creative / survival / adventure / spectator> [playername]"
 
 gmX:
@@ -59,6 +59,15 @@ gmX:
 
 heal:
   messages:
-    self: "You healed yourself!"
-    other: "<PLAYER> healed you."
-    console: "The console has healed you."
+    self: "&6TheBareEssentials: &aYou healed yourself!"
+    other: "&6TheBareEssentials: &a<PLAYER> healed you."
+    console: "&6TheBareEssentials: &aThe console has healed you."
+
+tpa:
+  wrongArguments: "&6TheBareEssentials: &cWrong arguments => /tpa <playername>"
+  noRequest: "&6TheBareEssentials: &cYou have no pending request."
+  tpaToSelf: "&6TheBareEssentials: &cYou can not teleport to yourself in this manner."
+  requestPending: "&6TheBareEssentials: &c<PLAYER> already has a pending request."
+  tpDeny:
+    requester: "6TheBareEssentials: &c<PLAYER> had denied your request."
+    receiver: "6TheBareEssentials: &aYou denied <PLAYER>'s request."

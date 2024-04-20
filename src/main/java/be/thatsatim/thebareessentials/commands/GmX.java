@@ -20,7 +20,7 @@ public class GmX implements CommandExecutor, TabCompleter {
 
     FileConfiguration config;
 
-    public GmX(TheBareEssentials plugin){
+    public GmX(TheBareEssentials plugin) {
         plugin.getCommand("gmc").setExecutor(this);
         plugin.getCommand("gms").setExecutor(this);
         plugin.getCommand("gma").setExecutor(this);
