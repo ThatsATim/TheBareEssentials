@@ -15,5 +15,6 @@ public final class TheBareEssentials extends JavaPlugin {
         new GmX(this);
         new Heal(this);
         new TpX(this);
+        new Tpa(this);
     }
 }
