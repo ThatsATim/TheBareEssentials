@@ -50,7 +50,7 @@ gamemode:
     other:
       sender: "&6TheBareEssentials: &aYou set <PLAYER> in <MODE>."
       target: "&6TheBareEssentials: &a<PLAYER> set you in <MODE>."
-    console: "&6TheBareEssentials: &aThe console set you in <MODE>"
+    console: "&6TheBareEssentials: &aThe console set you in <MODE>."
     wrongArguments: "&6TheBareEssentials: &cWrong arguments => /gamemode <creative / survival / adventure / spectator> [playername]"
 
 gmX:
@@ -71,3 +71,19 @@ tpa:
   tpDeny:
     requester: "6TheBareEssentials: &c<PLAYER> had denied your request."
     receiver: "6TheBareEssentials: &aYou denied <PLAYER>'s request."
+
+tpall:
+  wrongArguments: "&6TheBareEssentials: &cWrong aguments => /tpall [playername]"
+  toSelf:
+    sender: "&6TheBareEssentials: &aYou teleported everyone to yourself."
+    players: "&6TheBareEssentials: &a<PLAYER> has teleported you to themselves along with everyone else."
+  toOtherPlayer:
+    sender: "&6TheBareEssentials: &aYou teleported everyone to <PLAYER>."
+    players: "&6TheBareEssentials: &a<PLAYER> teleported everyone to <TARGET>."
+    target: "&6TheBareEssentials: &a<PLAYER> teleported everyone to you."
+
+
+tphere:
+  wrongArguments: "&6TheBareEssentials: &cWrong aguments => /tphere <playername>"
+  sender: "&6TheBareEssentials: &aYou have teleported <PLAYER> to yourself."
+  target: "&6TheBareEssentials: &a<PLAYER> has teleported you to themselves."

@@ -45,5 +45,9 @@ commands:
     permission: TBE.tpall
   tphere:
     description: Teleports a player to you
-    usage: /tphere [player]
+    usage: /tphere <playername>
     permission: TBE.tphere
+  tpa:
+    description: Sends a teleportation request to a player
+    usage: /tpa <playername>
+    permission: TBE.tpa

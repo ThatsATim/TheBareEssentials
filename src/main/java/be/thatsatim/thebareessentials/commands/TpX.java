@@ -39,8 +39,8 @@ public class TpX implements CommandExecutor, TabCompleter {
                 return true;
             }
 
-            if (arguments.length == 0) {
-                // TODO Add wrong args message
+            if (arguments.length != 1) {
+                Chat.message(sender, "tphere.wrongArguments", config, Chat.noReplacements);
                 return true;
             }
 
@@ -53,12 +53,22 @@ public class TpX implements CommandExecutor, TabCompleter {
 
             Player target = Bukkit.getPlayer(arguments[0]);
             target.teleport(player.getLocation());
-            // TODO add messages
+
+            String[][] replacementsSender = {{"<PLAYER>", player.getDisplayName()}};
+            String[][] replacementsTarget = {{"<PLAYER>", ((Player) sender).getDisplayName()}};
+
+            Chat.message(player, "tphere.sender", config, replacementsSender);
+            Chat.message(target, "tphere.target", config, replacementsTarget);
             return true;
         }
 
         if (!(sender.hasPermission("TBE.tpall"))) {
             Chat.message(sender, "no_perms", config, Chat.noReplacements);
+            return true;
+        }
+
+        if (arguments.length >= 2) {
+            Chat.message(sender, "tpall.wrongArguments", config, Chat.noReplacements);
             return true;
         }
 
@@ -70,10 +80,13 @@ public class TpX implements CommandExecutor, TabCompleter {
             }
 
             Player player = (Player) sender;
+            String[][] replacements = {{"<PLAYER>", player.getDisplayName()}};
+
+            Chat.message(player, "tpall.toSelf.sender", config, Chat.noReplacements);
 
             for (Player target : Bukkit.getServer().getOnlinePlayers()) {
                 target.teleport(player.getLocation());
-                // TODO add message
+                Chat.message(target, "tpall.toSelf.players", config, replacements);
             }
             return true;
         }
@@ -84,10 +97,19 @@ public class TpX implements CommandExecutor, TabCompleter {
         }
 
         Player player = Bukkit.getPlayer(arguments[0]);
+        String[][] replacementsPlayers = {{"<PLAYER>", ((Player) sender).getDisplayName()}};
+        String[][] replacementsSender = {{"<PLAYER>", player.getDisplayName()}};
+        String[][] replacementsTarget = {
+                {"<PLAYER>", ((Player) sender).getDisplayName()},
+                {"<TARGET>", player.getDisplayName()}
+        };
+
+        Chat.message(player, "tpall.toOtherPlayer.target", config, replacementsTarget);
+        Chat.message(sender, "tpall.toOtherPlayer.sender", config, replacementsSender);
 
         for (Player target : Bukkit.getServer().getOnlinePlayers()) {
             target.teleport(player.getLocation());
-            // TODO add messages
+            Chat.message(target, "tpall.toOtherPlayer.players", config, replacementsPlayers);
         }
         return true;
     }
