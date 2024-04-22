@@ -1,5 +1,8 @@
 playerNotFound: "&6TheBareEssentials: &cPlayer not found!"
 noPermission: "é6TheBareEssentials: &cYou do not have permission to do this!"
+joinMessage: "&a[+] <PLAYER>"
+leaveMessage: "&c[-] <PLAYER>"
+firstJoinMessage: "&a<PLAYER> joined for the very first time!"
 
 fly:
   messages:

@@ -86,7 +86,6 @@ public class GmX implements CommandExecutor, TabCompleter {
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] arguments) {
-
         if (arguments.length == 1) {
             return null;
         }

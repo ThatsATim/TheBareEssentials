@@ -59,3 +59,7 @@ commands:
     description: Denies an incoming teleportation request.
     usage: /tpdeny
     permission: TBE.tpa
+  thebareessentials:
+    description: Admin command to either check the version or reload the config file.
+    usage: /thebareessentials <version / reload>
+    permission: TBE.info
