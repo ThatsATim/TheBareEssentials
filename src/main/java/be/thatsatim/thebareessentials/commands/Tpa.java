@@ -50,9 +50,11 @@ public class Tpa implements CommandExecutor, TabCompleter {
                 return true;
             }
             for (Map.Entry<UUID, UUID> entry : targetMap.entrySet()) {
+                String[][] replacementsReceiver = {{"<PLAYER>", Bukkit.getPlayer(entry.getKey()).getDisplayName()}};
+                String[][] replacementsRequester = {{"<PLAYER>", playerReceiver.getDisplayName()}};
                 if ((entry.getValue()).equals(playerReceiver.getUniqueId())) {
-                    Chat.message(playerReceiver, "tpa.tpDeny.receiver", config, Chat.noReplacements);
-                    Chat.message(Bukkit.getPlayer(entry.getKey()), "tpa.tpDeny.requester", config, Chat.noReplacements);
+                    Chat.message(playerReceiver, "tpa.tpDeny.receiver", config, replacementsReceiver);
+                    Chat.message(Bukkit.getPlayer(entry.getKey()), "tpa.tpDeny.requester", config, replacementsRequester);
                     targetMap.remove(entry.getKey());
                     break;
                 }
@@ -76,6 +78,12 @@ public class Tpa implements CommandExecutor, TabCompleter {
 
                     playerRequester.teleport(playerReceiver);
                     targetMap.remove(entry.getKey());
+
+                    String[][] replacementsReceiver = {{"<PLAYER>", playerRequester.getDisplayName()}};
+                    String[][] replacementsRequester = {{"<PLAYER>", playerReceiver.getDisplayName()}};
+
+                    Chat.message(playerReceiver, "tpa.tpAccept.receiver", config, replacementsReceiver);
+                    Chat.message(playerRequester, "tpa.tpAccept.requester", config, replacementsRequester);
                     break;
                 }
             }

@@ -72,8 +72,11 @@ tpa:
   tpaToSelf: "&6TheBareEssentials: &cYou can not teleport to yourself in this manner."
   requestPending: "&6TheBareEssentials: &c<PLAYER> already has a pending request."
   tpDeny:
-    requester: "&6TheBareEssentials: &c<PLAYER> had denied your request."
+    requester: "&6TheBareEssentials: &c<PLAYER> has denied your request."
     receiver: "&6TheBareEssentials: &aYou denied <PLAYER>'s request."
+  tpAccept:
+    requester: "&6TheBareEssentials: &a<PLAYER> has accepted your request."
+    receiver: "&6TheBareEssentials: &aYou accepted <PLAYER>'s request."
 
 tpall:
   wrongArguments: "&6TheBareEssentials: &cWrong aguments => /tpall [playername]"
