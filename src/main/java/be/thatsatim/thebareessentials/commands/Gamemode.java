@@ -47,6 +47,11 @@ public class Gamemode implements CommandExecutor, TabCompleter {
             return true;
         }
 
+        if ((Bukkit.getPlayerExact(arguments[0]) == null)) {
+            Chat.message(sender, "playerNotFound", config, Chat.noReplacements);
+            return true;
+        }
+
         Player player = Bukkit.getPlayerExact(arguments[1]);
         assert player != null;
 

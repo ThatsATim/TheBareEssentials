@@ -31,30 +31,33 @@ public class GmX implements CommandExecutor, TabCompleter {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] arguments) {
 
         if (!(sender.hasPermission("TBE.gamemode"))) {
-            Chat.message(sender, "no_perms", config, null);
+            Chat.message(sender, "no_perms", config, Chat.noReplacements);
             return true;
         }
 
         if (arguments.length > 1) {
-            // TODO add wrong args message
-            Chat.message(sender, "", config, null);
+            Chat.message(sender, "gmX.messages.wrongArguments", config, Chat.noReplacements);
             return true;
         }
 
         if (arguments.length == 0) {
             if (!(sender instanceof Player)) {
-                // TODO add wrongArguments message
-                Chat.message(sender, "", config, null);
+                Chat.message(sender, "gmX.messages.wrongArguments", config, Chat.noReplacements);
                 return true;
             }
             gamemode((Player) sender, label);
             return true;
         }
 
+        if ((Bukkit.getPlayerExact(arguments[0]) == null)) {
+            Chat.message(sender, "playerNotFound", config, Chat.noReplacements);
+            return true;
+        }
+
         Player player = Bukkit.getPlayerExact(arguments[0]);
         assert player != null;
 
-        gamemode((Player) sender, arguments[0]);
+        gamemode(player, label);
         // TODO add message
 
         return true;
