@@ -60,8 +60,11 @@ gmX:
 heal:
   messages:
     self: "&6TheBareEssentials: &aYou healed yourself!"
-    other: "&6TheBareEssentials: &a<PLAYER> healed you."
+    other:
+      sender: "&6TheBareEssentials: &aYou healed <PLAYER>."
+      player: "&6TheBareEssentials: &a<PLAYER> healed you."
     console: "&6TheBareEssentials: &aThe console has healed you."
+    wrongArguments: "&6TheBareEssentials: &cWrong arguments => /heal [playername]"
 
 tpa:
   wrongArguments: "&6TheBareEssentials: &cWrong arguments => /tpa <playername>"

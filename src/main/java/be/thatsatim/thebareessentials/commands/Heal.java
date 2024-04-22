@@ -33,28 +33,41 @@ public class Heal implements CommandExecutor, TabCompleter {
         }
 
         if (arguments.length > 1) {
-            // TODO add wrong args message
-            Chat.message(sender, "", config, Chat.noReplacements);
+            Chat.message(sender, "heal.messages.wrongArguments", config, Chat.noReplacements);
             return true;
         }
 
         if (arguments.length == 0) {
             if (!(sender instanceof Player)) {
-                // TODO add wrong args message
-                Chat.message(sender, "", config, Chat.noReplacements);
+                Chat.message(sender, "heal.messages.wrongArguments", config, Chat.noReplacements);
                 return true;
             }
-            // TODO add message
+            Chat.message((Player) sender, "heal.messages.self", config, Chat.noReplacements);
             heal((Player) sender);
+            return true;
+        }
+
+        if ((Bukkit.getPlayerExact(arguments[0]) == null)) {
+            Chat.message(sender, "playerNotFound", config, Chat.noReplacements);
             return true;
         }
 
         Player player = Bukkit.getPlayerExact(arguments[0]);
         assert player != null;
 
-        // TODO add message
         heal(player);
 
+        String[][] replacementsSender = {{"<PLAYER>", player.getDisplayName()}};
+
+        if (sender instanceof Player) {
+            String[][] replacementsPlayer = {{"<PLAYER>", ((Player) sender).getDisplayName()}};
+            Chat.message(player, "heal.messages.other.player", config, replacementsPlayer);
+            Chat.message(sender, "heal.messages.other.sender", config, replacementsSender);
+            return true;
+        }
+
+        Chat.message(player, "heal.messages.console", config, Chat.noReplacements);
+        Chat.message(sender, "heal.messages.other.sender", config, replacementsSender);
         return true;
     }
 
