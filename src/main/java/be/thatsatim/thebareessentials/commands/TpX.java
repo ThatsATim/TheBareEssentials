@@ -97,9 +97,9 @@ public class TpX implements CommandExecutor, TabCompleter {
         }
 
         Player player = Bukkit.getPlayer(arguments[0]);
-        String[][] replacementsPlayers = {{"<PLAYER>", ((Player) sender).getDisplayName()}};
+        String[][] replacementsTarget = {{"<PLAYER>", ((Player) sender).getDisplayName()}};
         String[][] replacementsSender = {{"<PLAYER>", player.getDisplayName()}};
-        String[][] replacementsTarget = {
+        String[][] replacementsPlayers = {
                 {"<PLAYER>", ((Player) sender).getDisplayName()},
                 {"<TARGET>", player.getDisplayName()}
         };

@@ -51,3 +51,11 @@ commands:
     description: Sends a teleportation request to a player
     usage: /tpa <playername>
     permission: TBE.tpa
+  tpaccept:
+    description: Accept an incoming teleportation request.
+    usage: /tpaccept
+    permission: TBE.tpa
+  tpdeny:
+    description: Denies an incoming teleportation request.
+    usage: /tpdeny
+    permission: TBE.tpa

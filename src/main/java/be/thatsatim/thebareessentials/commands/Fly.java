@@ -54,12 +54,13 @@ public class Fly implements CommandExecutor, TabCompleter {
 
         if (sender == Bukkit.getPlayerExact(arguments[0])) {
             flySelfMessage((Player) sender, active);
+            return true;
         }
 
         String[][] replacementsSender = {{"<PLAYER>", player.getDisplayName()}};
-        String[][] replacementsPlayer = {{"<PLAYER>", ((Player) sender).getDisplayName()}};
 
         if (sender instanceof Player) {
+            String[][] replacementsPlayer = {{"<PLAYER>", ((Player) sender).getDisplayName()}};
             if (active == 1) {
                 Chat.message(sender, "fly.messages.other.sender.activate", config, replacementsSender);
                 Chat.message(player, "fly.messages.other.target.activate", config, replacementsPlayer);
