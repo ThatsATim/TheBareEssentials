@@ -9,6 +9,7 @@ public final class TheBareEssentials extends JavaPlugin {
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
+        new chatMessage(this);
         new join(this);
         new leave(this);
         new Fly(this);
