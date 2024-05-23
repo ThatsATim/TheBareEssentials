@@ -55,7 +55,7 @@ public class Top implements CommandExecutor, TabCompleter {
         Player player = Bukkit.getPlayer(arguments[0]);
         assert player != null;
 
-        String[][] replacementsSender = {{"<PLAYER>", player.getDisplayName()}};
+        String[][] replacementsSender = {{"<PLAYER>", String.valueOf(player.displayName())}};
 
         teleportToTop(player);
 
@@ -65,7 +65,7 @@ public class Top implements CommandExecutor, TabCompleter {
         }
 
         if (sender instanceof Player) {
-            String[][] replacementsPlayer = {{"<PLAYER>", ((Player) sender).getDisplayName()}};
+            String[][] replacementsPlayer = {{"<PLAYER>", String.valueOf(((Player) sender).displayName())}};
             Chat.message(sender, "top.messages.other.sender", config, replacementsSender);
             Chat.message(player, "top.messages.other.player", config, replacementsPlayer);
             return true;

@@ -11,7 +11,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.inventory.meta.Repairable;
+import org.bukkit.inventory.meta.Damageable;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -60,8 +61,8 @@ public class Repair implements CommandExecutor, TabCompleter {
         Player player = Bukkit.getPlayerExact(arguments[1]);
         assert player != null;
 
-        String[][] replacementsSender = {{"<PLAYER>", player.getDisplayName()}};
-        String[][] replacementsPlayer = {{"<PLAYER>", ((Player) sender).getDisplayName()}};
+        String[][] replacementsSender = {{"<PLAYER>", String.valueOf(player.displayName())}};
+        String[][] replacementsPlayer = {{"<PLAYER>", String.valueOf(((Player) sender).displayName())}};
 
         if (arguments[0].equalsIgnoreCase("HeldItem")) {
             repairItem(player.getInventory().getItemInMainHand());
@@ -85,14 +86,20 @@ public class Repair implements CommandExecutor, TabCompleter {
         return true;
     }
     public void repairItem(ItemStack item) {
-        item.setDurability((short) 0);
+        ItemMeta itemMeta = item.getItemMeta();
+        if (itemMeta instanceof Damageable) {
+            ((Damageable) itemMeta).setDamage(0);
+            item.setItemMeta(itemMeta);
+        }
     }
     public void repairInventory(PlayerInventory inventory) {
         for (ItemStack item : inventory) {
             if (item == null) continue;
             if (!item.hasItemMeta()) continue;
-            if (item.getItemMeta() instanceof Repairable) {
-                item.setDurability((short) 0);
+            ItemMeta itemMeta = item.getItemMeta();
+            if (itemMeta instanceof Damageable) {
+                ((Damageable) itemMeta).setDamage(0);
+                item.setItemMeta(itemMeta);
             }
         }
     }

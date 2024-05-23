@@ -3,6 +3,7 @@ package be.thatsatim.thebareessentials.commands;
 import be.thatsatim.thebareessentials.TheBareEssentials;
 import be.thatsatim.thebareessentials.utils.Chat;
 import org.bukkit.Bukkit;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -42,7 +43,7 @@ public class Heal implements CommandExecutor, TabCompleter {
                 Chat.message(sender, "heal.messages.wrongArguments", config, Chat.noReplacements);
                 return true;
             }
-            Chat.message((Player) sender, "heal.messages.self", config, Chat.noReplacements);
+            Chat.message(sender, "heal.messages.self", config, Chat.noReplacements);
             heal((Player) sender);
             return true;
         }
@@ -57,10 +58,10 @@ public class Heal implements CommandExecutor, TabCompleter {
 
         heal(player);
 
-        String[][] replacementsSender = {{"<PLAYER>", player.getDisplayName()}};
+        String[][] replacementsSender = {{"<PLAYER>", String.valueOf(player.displayName())}};
 
         if (sender instanceof Player) {
-            String[][] replacementsPlayer = {{"<PLAYER>", ((Player) sender).getDisplayName()}};
+            String[][] replacementsPlayer = {{"<PLAYER>", String.valueOf(((Player) sender).displayName())}};
             Chat.message(player, "heal.messages.other.player", config, replacementsPlayer);
             Chat.message(sender, "heal.messages.other.sender", config, replacementsSender);
             return true;
@@ -72,7 +73,7 @@ public class Heal implements CommandExecutor, TabCompleter {
     }
 
     public void heal(Player player) {
-        player.setHealth(player.getMaxHealth());
+        player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
         player.setFoodLevel(20);
         player.setFireTicks(0);
         for (PotionEffect effect : player.getActivePotionEffects()) {

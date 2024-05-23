@@ -54,8 +54,8 @@ public class TpX implements CommandExecutor, TabCompleter {
             Player target = Bukkit.getPlayer(arguments[0]);
             target.teleport(player.getLocation());
 
-            String[][] replacementsSender = {{"<PLAYER>", player.getDisplayName()}};
-            String[][] replacementsTarget = {{"<PLAYER>", ((Player) sender).getDisplayName()}};
+            String[][] replacementsSender = {{"<PLAYER>", String.valueOf(player.displayName())}};
+            String[][] replacementsTarget = {{"<PLAYER>", String.valueOf(((Player) sender).displayName())}};
 
             Chat.message(player, "tphere.sender", config, replacementsSender);
             Chat.message(target, "tphere.target", config, replacementsTarget);
@@ -80,7 +80,7 @@ public class TpX implements CommandExecutor, TabCompleter {
             }
 
             Player player = (Player) sender;
-            String[][] replacements = {{"<PLAYER>", player.getDisplayName()}};
+            String[][] replacements = {{"<PLAYER>", String.valueOf(player.displayName())}};
 
             Chat.message(player, "tpall.toSelf.sender", config, Chat.noReplacements);
 
@@ -97,11 +97,11 @@ public class TpX implements CommandExecutor, TabCompleter {
         }
 
         Player player = Bukkit.getPlayer(arguments[0]);
-        String[][] replacementsTarget = {{"<PLAYER>", ((Player) sender).getDisplayName()}};
-        String[][] replacementsSender = {{"<PLAYER>", player.getDisplayName()}};
+        String[][] replacementsTarget = {{"<PLAYER>", String.valueOf(((Player) sender).displayName())}};
+        String[][] replacementsSender = {{"<PLAYER>", String.valueOf(player.displayName())}};
         String[][] replacementsPlayers = {
-                {"<PLAYER>", ((Player) sender).getDisplayName()},
-                {"<TARGET>", player.getDisplayName()}
+                {"<PLAYER>", String.valueOf(((Player) sender).displayName())},
+                {"<TARGET>", String.valueOf(player.displayName())}
         };
 
         Chat.message(player, "tpall.toOtherPlayer.target", config, replacementsTarget);

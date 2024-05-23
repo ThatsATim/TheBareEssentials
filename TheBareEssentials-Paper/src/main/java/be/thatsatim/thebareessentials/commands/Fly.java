@@ -57,10 +57,10 @@ public class Fly implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        String[][] replacementsSender = {{"<PLAYER>", player.getDisplayName()}};
+        String[][] replacementsSender = {{"<PLAYER>", String.valueOf(player.displayName())}};
 
         if (sender instanceof Player) {
-            String[][] replacementsPlayer = {{"<PLAYER>", ((Player) sender).getDisplayName()}};
+            String[][] replacementsPlayer = {{"<PLAYER>", String.valueOf(((Player) sender).displayName())}};
             if (active == 1) {
                 Chat.message(sender, "fly.messages.other.sender.activate", config, replacementsSender);
                 Chat.message(player, "fly.messages.other.target.activate", config, replacementsPlayer);

@@ -50,8 +50,8 @@ public class Tpa implements CommandExecutor, TabCompleter {
                 return true;
             }
             for (Map.Entry<UUID, UUID> entry : targetMap.entrySet()) {
-                String[][] replacementsReceiver = {{"<PLAYER>", Bukkit.getPlayer(entry.getKey()).getDisplayName()}};
-                String[][] replacementsRequester = {{"<PLAYER>", playerReceiver.getDisplayName()}};
+                String[][] replacementsReceiver = {{"<PLAYER>", String.valueOf(Bukkit.getPlayer(entry.getKey()).displayName())}};
+                String[][] replacementsRequester = {{"<PLAYER>", String.valueOf(playerReceiver.displayName())}};
                 if ((entry.getValue()).equals(playerReceiver.getUniqueId())) {
                     Chat.message(playerReceiver, "tpa.tpDeny.receiver", config, replacementsReceiver);
                     Chat.message(Bukkit.getPlayer(entry.getKey()), "tpa.tpDeny.requester", config, replacementsRequester);
@@ -79,8 +79,8 @@ public class Tpa implements CommandExecutor, TabCompleter {
                     playerRequester.teleport(playerReceiver);
                     targetMap.remove(entry.getKey());
 
-                    String[][] replacementsReceiver = {{"<PLAYER>", playerRequester.getDisplayName()}};
-                    String[][] replacementsRequester = {{"<PLAYER>", playerReceiver.getDisplayName()}};
+                    String[][] replacementsReceiver = {{"<PLAYER>", String.valueOf(playerRequester.displayName())}};
+                    String[][] replacementsRequester = {{"<PLAYER>", String.valueOf(playerReceiver.displayName())}};
 
                     Chat.message(playerReceiver, "tpa.tpAccept.receiver", config, replacementsReceiver);
                     Chat.message(playerRequester, "tpa.tpAccept.requester", config, replacementsRequester);
@@ -109,24 +109,24 @@ public class Tpa implements CommandExecutor, TabCompleter {
         }
 
         if (targetMap.containsKey(playerRequester.getUniqueId())) {
-            String[][] replacements = {{"<PLAYER>", playerReceiver.getDisplayName()}};
+            String[][] replacements = {{"<PLAYER>", String.valueOf(playerReceiver.displayName())}};
             Chat.message(playerRequester, "tpa.requestPending", config, replacements);
             return true;
         }
 
         targetMap.put(playerRequester.getUniqueId(), playerReceiver.getUniqueId());
 
-        String[][] replacementsRequester = {{"<PLAYER>", playerReceiver.getDisplayName()}};
+        String[][] replacementsRequester = {{"<PLAYER>", String.valueOf(playerReceiver.displayName())}};
         Chat.message(playerRequester, "tpa.requestSent.requester", config, replacementsRequester);
 
-        String[][] replacementsReceiver = {{"<PLAYER>", playerReceiver.getDisplayName()}};
+        String[][] replacementsReceiver = {{"<PLAYER>", String.valueOf(playerReceiver.displayName())}};
         Chat.message(playerReceiver, "tpa.requestSent.receiver", config, replacementsReceiver);
 
         (new BukkitRunnable() {
             public void run() {
                 Tpa.targetMap.remove(playerRequester.getUniqueId());
-                String[][] replacementsRequester = {{"<PLAYER>", playerReceiver.getDisplayName()}};
-                String[][] replacementsReceiver = {{"<PLAYER>", playerRequester.getDisplayName()}};
+                String[][] replacementsRequester = {{"<PLAYER>", String.valueOf(playerReceiver.displayName())}};
+                String[][] replacementsReceiver = {{"<PLAYER>", String.valueOf(playerRequester.displayName())}};
                 Chat.message(playerRequester, "tpa.expire", config, replacementsRequester);
                 Chat.message(playerReceiver, "tpa.expire", config, replacementsReceiver);
             }

@@ -57,14 +57,14 @@ public class GmX implements CommandExecutor, TabCompleter {
         assert player != null;
 
         String mode = gamemode(player, label);
-        String[][] replacementsSender = {{"<MODE>", mode}, {"<PLAYER>", player.getDisplayName()}};
+        String[][] replacementsSender = {{"<MODE>", mode}, {"<PLAYER>", String.valueOf(player.displayName())}};
         Chat.message(sender, "gamemode.messages.other.sender", config, replacementsSender);
         if (sender instanceof ConsoleCommandSender) {
             String[][] replacementsConsole = {{"<MODE>", mode}};
             Chat.message(player, "gamemode.messages.console", config, replacementsConsole);
             return true;
         }
-        String[][] replacementsPlayer = {{"<MODE>", mode}, {"<PLAYER>",((Player) sender).getDisplayName()}};
+        String[][] replacementsPlayer = {{"<MODE>", mode}, {"<PLAYER>", String.valueOf(((Player) sender).displayName())}};
         Chat.message(player, "gamemode.messages.other.target", config, replacementsPlayer);
         return true;
     }
