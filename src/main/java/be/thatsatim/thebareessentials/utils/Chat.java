@@ -5,8 +5,6 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-import java.util.Arrays;
-
 public class Chat {
     public static String color (String s){
         return ChatColor.translateAlternateColorCodes('&', s);
@@ -30,5 +28,4 @@ public class Chat {
             ((ConsoleCommandSender) receiver).sendMessage(message);
         }
     }
-
 }

@@ -4,10 +4,7 @@ import be.thatsatim.thebareessentials.TheBareEssentials;
 import be.thatsatim.thebareessentials.utils.Chat;
 import be.thatsatim.thebareessentials.utils.PlayerState;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
+import org.bukkit.command.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -45,7 +42,9 @@ public class GmX implements CommandExecutor, TabCompleter {
                 Chat.message(sender, "gmX.messages.wrongArguments", config, Chat.noReplacements);
                 return true;
             }
-            gamemode((Player) sender, label);
+            String mode = gamemode((Player) sender, label);
+            String[][] replacements = {{"<MODE>", mode}};
+            Chat.message(sender, "gamemode.messages.self", config, replacements);
             return true;
         }
 
@@ -57,31 +56,35 @@ public class GmX implements CommandExecutor, TabCompleter {
         Player player = Bukkit.getPlayerExact(arguments[0]);
         assert player != null;
 
-        gamemode(player, label);
-        // TODO add message
-
+        String mode = gamemode(player, label);
+        String[][] replacementsSender = {{"<MODE>", mode}, {"<PLAYER>", player.getDisplayName()}};
+        Chat.message(sender, "gamemode.messages.other.sender", config, replacementsSender);
+        if (sender instanceof ConsoleCommandSender) {
+            String[][] replacementsConsole = {{"<MODE>", mode}};
+            Chat.message(player, "gamemode.messages.console", config, replacementsConsole);
+            return true;
+        }
+        String[][] replacementsPlayer = {{"<MODE>", mode}, {"<PLAYER>",((Player) sender).getDisplayName()}};
+        Chat.message(player, "gamemode.messages.other.target", config, replacementsPlayer);
         return true;
     }
 
-    public void gamemode(Player player, String mode) {
+    public String gamemode(Player player, String mode) {
         switch(mode) {
             case "gmc":
                 PlayerState.changeGamemode(player, "CREATIVE");
-                player.sendMessage(mode);
-                break;
+                return "creative";
             case "gms":
                 PlayerState.changeGamemode(player, "SURVIVAL");
-                player.sendMessage(mode);
-                break;
+                return "survival";
             case "gma":
                 PlayerState.changeGamemode(player, "ADVENTURE");
-                player.sendMessage(mode);
-                break;
+                return "adventure";
             case "gmsp":
                 PlayerState.changeGamemode(player, "SPECTATOR");
-                player.sendMessage(mode);
-                break;
+                return "spectator";
         }
+        return mode;
     }
 
     @Override
