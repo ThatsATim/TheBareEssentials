@@ -10,10 +10,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Gamemode implements CommandExecutor, TabCompleter {
 
@@ -42,12 +39,18 @@ public class Gamemode implements CommandExecutor, TabCompleter {
                 return true;
             }
             String mode = gamemode((Player) sender, arguments[0]);
+
+            if (mode.equalsIgnoreCase("wrongArgs")) {
+                Chat.message(sender, "gamemode.messages.wrongArguments", config, Chat.noReplacements);
+                return true;
+            }
+
             String[][] replacements = {{"<MODE>", mode}};
             Chat.message(sender, "gamemode.messages.self", config, replacements);
             return true;
         }
 
-        if ((Bukkit.getPlayerExact(arguments[0]) == null)) {
+        if ((Bukkit.getPlayerExact(arguments[1]) == null)) {
             Chat.message(sender, "playerNotFound", config, Chat.noReplacements);
             return true;
         }
@@ -56,6 +59,12 @@ public class Gamemode implements CommandExecutor, TabCompleter {
         assert player != null;
 
         String mode = gamemode(player, arguments[0]);
+
+        if (mode.equalsIgnoreCase("wrongArgs")) {
+            Chat.message(sender, "gamemode.messages.wrongArguments", config, Chat.noReplacements);
+            return true;
+        }
+
         String[][] replacementsSender = {{"<MODE>", mode}, {"<PLAYER>", player.getDisplayName()}};
         Chat.message(sender, "gamemode.messages.other.sender", config, replacementsSender);
         if (sender instanceof ConsoleCommandSender) {
@@ -83,7 +92,7 @@ public class Gamemode implements CommandExecutor, TabCompleter {
                 PlayerState.changeGamemode(player, "SPECTATOR");
                 return "spectator";
         }
-        return mode;
+        return "wrongArgs";
     }
 
     @Override
