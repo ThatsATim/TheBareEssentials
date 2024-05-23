@@ -64,8 +64,8 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-text-serializer-plain:4.16.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-text-logger-slf4j:4.16.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.checkerframework:checker-qual:3.33.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm:9.5" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm-commons:9.5" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm-tree:9.5" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm:9.7" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm-commons:9.7" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm-tree:9.7" level="project" />
   </component>
 </module>
