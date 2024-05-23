@@ -1,0 +1,104 @@
+playerNotFound: "&6TheBareEssentials: &cPlayer not found!"
+noPermission: "é6TheBareEssentials: &cYou do not have permission to do this!"
+joinMessage: "&a[+] <PLAYER>"
+leaveMessage: "&c[-] <PLAYER>"
+firstJoinMessage: "&a<PLAYER> joined for the very first time!"
+
+fly:
+  messages:
+    self:
+      activate: "&6TheBareEssentials: &aYou enabled flight on yourself."
+      deactivate: "&6TheBareEssentials: &cYou deactivated flight on yourself."
+    other:
+      sender:
+        activate: "&6TheBareEssentials: &aYou enabled flight on <PLAYER>."
+        deactivate: "&6TheBareEssentials: &cYou deactivated flight on <PLAYER>."
+      target:
+        activate: "&6TheBareEssentials: &a<PLAYER> enabled flight on you."
+        deactivate: "&6TheBareEssentials: &c<PLAYER> deactivated flight on you."
+    console:
+      target:
+        activate: "&6TheBareEssentials: &aThe console enabled flight on you."
+        deactivate: "&6TheBareEssentials: &cThe console deactivated flight on you."
+    wrongArguments: "&6TheBareEssentials: &cToo many arguments => /fly [playername]"
+
+top:
+  messages:
+    self: "&6TheBareEssentials: &aYou teleported yourself to the top."
+    other:
+      sender: "&6TheBareEssentials &aYou teleported <PLAYER> to the top."
+      player: "&66TheBareEssentials &a<PLAYER> teleported you to the top."
+    console: "&6TheBareEssentials: &aThe console teleported you to the top."
+    wrongArguments: "&6TheBareEssentials: &cToo many arguments => /top [playername]"
+
+repair:
+  messages:
+    self:
+      HeldItem: "&6TheBareEssentials: &aYou repaired the item in your hand."
+      all: "&6TheBareEssentials: &aYou repaired all the items in your inventory."
+    other:
+      HeldItem:
+        sender: "&6TheBareEssentials: &aYou have repaired the item in the hand of <PLAYER>."
+        player: "&6TheBareEssentials: &a<PLAYER> has repaired the item in your hand."
+        console: "&6TheBareEssentials: &aThe console has repaired the item in your hand."
+      all:
+        sender: "&6TheBareEssentials: &aYou have repaired all items in the inventory of <PLAYER>."
+        player: "&6TheBareEssentials: &a<PLAYER> has repaired all the items in your inventory."
+        console: "&6TheBareEssentials: &aThe console has repaired all the items in your inventory."
+    wrongArguments: "&6TheBareEssentials: &cWrong arguments => /repair [all / HeldItem] [playername]"
+
+gamemode:
+  messages:
+    self: "&6TheBareEssentials: &aYou set your own gamemode to <MODE>."
+    other:
+      sender: "&6TheBareEssentials: &aYou set <PLAYER> in <MODE>."
+      target: "&6TheBareEssentials: &a<PLAYER> set you in <MODE>."
+    console: "&6TheBareEssentials: &aThe console set you in <MODE>."
+    wrongArguments: "&6TheBareEssentials: &cWrong arguments => /gamemode <creative / survival / adventure / spectator> [playername]"
+
+gmX:
+  messages:
+    wrongArguments: "&6TheBareEssentials: &cWrong arguments => /gm<c / s / a / sp> [playername]"
+
+heal:
+  messages:
+    self: "&6TheBareEssentials: &aYou healed yourself!"
+    other:
+      sender: "&6TheBareEssentials: &aYou healed <PLAYER>."
+      player: "&6TheBareEssentials: &a<PLAYER> healed you."
+    console: "&6TheBareEssentials: &aThe console has healed you."
+    wrongArguments: "&6TheBareEssentials: &cWrong arguments => /heal [playername]"
+
+tpa:
+  wrongArguments: "&6TheBareEssentials: &cWrong arguments => /tpa <playername>"
+  noRequest: "&6TheBareEssentials: &cYou have no pending request."
+  tpaToSelf: "&6TheBareEssentials: &cYou can not teleport to yourself in this manner."
+  requestPending: "&6TheBareEssentials: &c<PLAYER> already has a pending request."
+  tpDeny:
+    requester: "&6TheBareEssentials: &c<PLAYER> has denied your request."
+    receiver: "&6TheBareEssentials: &aYou denied <PLAYER>'s request."
+  tpAccept:
+    requester: "&6TheBareEssentials: &a<PLAYER> has accepted your request."
+    receiver: "&6TheBareEssentials: &aYou accepted <PLAYER>'s request."
+  expire:
+    requester: "&6TheBareEssentials: &aYour tpa request to <PLAYER> has expired."
+    receiver: "&6TheBareEssentials: &aThe tpa request you got from <PLAYER> expired."
+  requestSent:
+    requester: "&6TheBareEssentials: &aTpa request has been sent to <PLAYER>."
+    receiver: "&6TheBareEssentials: &a<PLAYER> has requested to teleport to you. \n/tpaccept to accept \n&c/tpdeny to deny \n&aThis will automatically expire in 5 minutes."
+
+tpall:
+  wrongArguments: "&6TheBareEssentials: &cWrong aguments => /tpall [playername]"
+  toSelf:
+    sender: "&6TheBareEssentials: &aYou teleported everyone to yourself."
+    players: "&6TheBareEssentials: &a<PLAYER> has teleported you to themselves along with everyone else."
+  toOtherPlayer:
+    sender: "&6TheBareEssentials: &aYou teleported everyone to <PLAYER>."
+    players: "&6TheBareEssentials: &a<PLAYER> teleported everyone to <TARGET>."
+    target: "&6TheBareEssentials: &a<PLAYER> teleported everyone to you."
+
+
+tphere:
+  wrongArguments: "&6TheBareEssentials: &cWrong aguments => /tphere <playername>"
+  sender: "&6TheBareEssentials: &aYou have teleported <PLAYER> to yourself."
+  target: "&6TheBareEssentials: &a<PLAYER> has teleported you to themselves."

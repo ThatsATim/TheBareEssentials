@@ -1,0 +1,65 @@
+name: TheBareEssentials
+version: '${project.version}'
+main: be.thatsatim.thebareessentials.TheBareEssentials
+api-version: 1.20
+commands:
+  fly:
+    description: Toggle a player's ability to fly.
+    usage: /fly [player]
+    permission: TBE.fly
+  top:
+    description: Teleport to the highest block at your location.
+    usage: /top [player]
+    permission: TBE.top
+  repair:
+    description: repairs an item or the whole inventory of a player.
+    usage: /repair <all / HeldItem> [playername]
+    permission: TBE.repair
+  gamemode:
+    description: Set a players gamemode.
+    usage: /gamemode <creative / survival / adventure / spectator> [playername]
+    permission: TBE.gamemode
+  gmc:
+    description: Set a players gamemode to creative.
+    usage: /gmc [playername]
+    permission: TBE.gamemode
+  gms:
+    description: Set a players gamemode to survival.
+    usage: /gms [playername]
+    permission: TBE.gamemode
+  gma:
+    description: Set a players gamemode to adventure.
+    usage: /gma [playername]
+    permission: TBE.gamemode
+  gmsp:
+    description: Set a players gamemode to spectator.
+    usage: /gmsp [playername]
+    permission: TBE.gamemode
+  heal:
+    description: Heals a player
+    usage: /heal [playername]
+    permission: TBE.heal
+  tpall:
+    description: Teleports everyone to a player
+    usage: /tpall [playername]
+    permission: TBE.tpall
+  tphere:
+    description: Teleports a player to you
+    usage: /tphere <playername>
+    permission: TBE.tphere
+  tpa:
+    description: Sends a teleportation request to a player
+    usage: /tpa <playername>
+    permission: TBE.tpa
+  tpaccept:
+    description: Accept an incoming teleportation request.
+    usage: /tpaccept
+    permission: TBE.tpa
+  tpdeny:
+    description: Denies an incoming teleportation request.
+    usage: /tpdeny
+    permission: TBE.tpa
+  thebareessentials:
+    description: Admin command to either check the version or reload the config file.
+    usage: /thebareessentials <version / reload>
+    permission: TBE.info
