@@ -116,9 +116,19 @@ public class Tpa implements CommandExecutor, TabCompleter {
 
         targetMap.put(playerRequester.getUniqueId(), playerReceiver.getUniqueId());
 
+        String[][] replacementsRequester = {{"<PLAYER>", playerReceiver.getDisplayName()}};
+        Chat.message(playerRequester, "tpa.requestSent.requester", config, replacementsRequester);
+
+        String[][] replacementsReceiver = {{"<PLAYER>", playerReceiver.getDisplayName()}};
+        Chat.message(playerReceiver, "tpa.requestSent.receiver", config, replacementsReceiver);
+
         (new BukkitRunnable() {
             public void run() {
                 Tpa.targetMap.remove(playerRequester.getUniqueId());
+                String[][] replacementsRequester = {{"<PLAYER>", playerReceiver.getDisplayName()}};
+                String[][] replacementsReceiver = {{"<PLAYER>", playerRequester.getDisplayName()}};
+                Chat.message(playerRequester, "tpa.expire", config, replacementsRequester);
+                Chat.message(playerReceiver, "tpa.expire", config, replacementsReceiver);
             }
         }).runTaskLaterAsynchronously(this.plugin, 6000L);
 

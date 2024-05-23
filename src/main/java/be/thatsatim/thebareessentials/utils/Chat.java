@@ -6,8 +6,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 public class Chat {
-    public static String color (String s){
-        return ChatColor.translateAlternateColorCodes('&', s);
+    public static String color (String string){
+        return ChatColor.translateAlternateColorCodes('&', string);
     }
 
     public static String[][] noReplacements = {};
@@ -18,6 +18,12 @@ public class Chat {
         for (String[] replacement : replacements) {
             message = message.replace(replacement[0], replacement[1]);
         }
+
+        try {
+            message = message.replace("\\n", "\n");
+        } catch (Exception ignored) {
+        }
+
         message = color(message);
 
         if (receiver instanceof Player) {

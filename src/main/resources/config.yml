@@ -80,6 +80,12 @@ tpa:
   tpAccept:
     requester: "&6TheBareEssentials: &a<PLAYER> has accepted your request."
     receiver: "&6TheBareEssentials: &aYou accepted <PLAYER>'s request."
+  expire:
+    requester: "&6TheBareEssentials: &aYour tpa request to <PLAYER> has expired."
+    receiver: "&6TheBareEssentials: &aThe tpa request you got from <PLAYER> expired."
+  requestSent:
+    requester: "&6TheBareEssentials: &aRequest has been sent to <PLAYER>"
+    receiver: "&6TheBareEssentials: &a<PLAYER> has requested to teleport to you. \n/tpaccept to accept \n&c/tpdeny yo deny \n&aThis will automatically expire in 5 minutes."
 
 tpall:
   wrongArguments: "&6TheBareEssentials: &cWrong aguments => /tpall [playername]"
