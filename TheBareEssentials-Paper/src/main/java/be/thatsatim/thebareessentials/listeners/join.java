@@ -2,6 +2,7 @@ package be.thatsatim.thebareessentials.listeners;
 
 import be.thatsatim.thebareessentials.TheBareEssentials;
 import be.thatsatim.thebareessentials.utils.Chat;
+import net.kyori.adventure.text.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -22,13 +23,18 @@ public class join implements Listener {
     public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
 
+        TextComponent textComponent = (TextComponent) player.displayName();
+        String displayName = textComponent.content();
+
+        String[][] replacements = {{"<PLAYER>", displayName}};
+
+        event.joinMessage(null);
+
         if (!player.hasPlayedBefore()) {
-            event.setJoinMessage(null);
-            Bukkit.broadcastMessage(Chat.color(config.getString("firstJoinMessage").replace("<PLAYER>", player.getDisplayName())));
+            Chat.broadcast("firstJoinMessage", config, replacements);
             return;
         }
 
-        event.setJoinMessage(null);
-        Bukkit.broadcastMessage(Chat.color(config.getString("joinMessage").replace("<PLAYER>", player.getDisplayName())));
+        Chat.broadcast("joinMessage", config, replacements);
     }
 }

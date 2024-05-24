@@ -1,8 +1,8 @@
 package be.thatsatim.thebareessentials.listeners;
 
 import be.thatsatim.thebareessentials.TheBareEssentials;
+import be.thatsatim.thebareessentials.utils.Chat;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,7 +20,7 @@ public class chatMessage implements Listener {
         if (!(player.hasPermission("TBE.chatColor"))) {
             return;
         }
-        event.setMessage(ChatColor.translateAlternateColorCodes('&', event.getMessage()));
+        Chat.color(event.getMessage());
     }
 
 }
