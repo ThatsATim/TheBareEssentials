@@ -15,7 +15,7 @@ import java.util.List;
 
 public class TheBareEssentials implements CommandExecutor, TabCompleter {
 
-    private be.thatsatim.thebareessentials.TheBareEssentials plugin;
+    private final be.thatsatim.thebareessentials.TheBareEssentials plugin;
 
     public TheBareEssentials(be.thatsatim.thebareessentials.TheBareEssentials plugin) {
         this.plugin = plugin;

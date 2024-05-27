@@ -18,10 +18,12 @@ public class Chat {
     private static String getFromConfig(String message, FileConfiguration config, String[][] replacements) {
         message = config.getString(message);
         for (String[] replacement : replacements) {
+            assert message != null;
             message = message.replace(replacement[0], replacement[1]);
         }
 
         try {
+            assert message != null;
             message = message.replace("\\n", "\n");
         } catch (Exception ignored) {
         }

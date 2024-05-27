@@ -52,6 +52,7 @@ public class TpX implements CommandExecutor, TabCompleter {
             }
 
             Player target = Bukkit.getPlayer(arguments[0]);
+            assert target != null;
             target.teleport(player.getLocation());
 
             String[][] replacementsSender = {{"<PLAYER>", String.valueOf(player.displayName())}};
@@ -97,6 +98,7 @@ public class TpX implements CommandExecutor, TabCompleter {
         }
 
         Player player = Bukkit.getPlayer(arguments[0]);
+        assert player != null;
         String[][] replacementsTarget = {{"<PLAYER>", String.valueOf(((Player) sender).displayName())}};
         String[][] replacementsSender = {{"<PLAYER>", String.valueOf(player.displayName())}};
         String[][] replacementsPlayers = {
